@@ -1,10 +1,14 @@
 import './App.css';
-import UseEffect from './Components/UseEffect';
+import Content from './Components/Content';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
 
 function App() {
   return (
     <>
-      <UseEffect />
+      <Header />
+      <Content />
+      <Footer />
     </>
   );
 }
