@@ -50,38 +50,89 @@ const Inner = styled.div`
 `;
 
 const Navi = styled.nav`
-  display: flex;
   color: #FFFFFF;
   text-align: center;
   font-weight: 300;
 
-  button {
-    all: unset;
-    width: 100px;
+  ul {
+    display: flex;
+    width: 500px;
+    justify-content: center;
     :hover {
       cursor: pointer;
     }
   }
+
+  li {
+    list-style: none;
+    width: 70px;
+    position: relative;
+    padding: 20px 0 20px 0;
+    text-align: center;
+  }
+
+  li.menu-active {
+    color: #61dafb;
+  }
+
+  li.menu-active .bar {
+    border: 1px solid #61dafb;
+    height: 1px;
+    background-color: #61dafb;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 97%;
+  }
 `;
 
 const Header = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [logoActive, setLogoActive] = useState(false);
+  const [menuActive, setMenuActive] = useState(0);
 
-  const handleActive = () => {
-    setIsActive(!isActive);
+  const handleLogoActive = () => {
+    setLogoActive(!logoActive);
+  }
+
+  const handleMenuActive = (index) => {
+    setMenuActive(index);
+    console.log(index);
   }
 
   return (
     <Wrapper>
       <Inner>
         <FaReact className='react-icons' />
-        <a href='/' className={isActive ? 'react active' : 'react'} onClick={handleActive} >React</a>
+        <a href='/' className={logoActive ? 'react active' : 'react'} onClick={handleLogoActive} >React</a>
       </Inner>
       <Navi>
-        <button type="button" target="apple">문서 Apple</button>
-        <button type="button" target="book">자습서 Book</button>
-        <button type="button" target="cat">블로그 Cat</button>
-        <button type="button" target="doodle">커뮤니티 Doodle</button>
+        <ul>
+          <li 
+            className={menuActive === 0 ? 'menu-active' : null} 
+            onClick={() => handleMenuActive(0)}>
+            문서
+            <span className="bar" />
+          </li>
+          <li 
+            className={menuActive === 1 ? 'menu-active' : null} 
+            onClick={() => handleMenuActive(1)}>
+            자습서
+            <span className="bar" />
+          </li>
+          <li 
+            className={menuActive === 2 ? 'menu-active' : null} 
+            onClick={() => handleMenuActive(2)}>
+            블로그
+            <span className="bar" />
+          </li>
+          <li 
+            className={menuActive === 3 ? 'menu-active' : null} 
+            onClick={() => handleMenuActive(3)}>
+            커뮤니티
+            <span className="bar" />
+          </li>
+        </ul>
       </Navi>
       <Search />
       <Inner>
