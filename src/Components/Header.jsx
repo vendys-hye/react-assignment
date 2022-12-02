@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaReact } from 'react-icons/fa';
 import Search from './Search';
+import useForm from '../hooks/useForm';
 
 const Wrapper = styled.div`
   background-color: #20232a;
@@ -139,6 +140,7 @@ const Header = () => {
         <a href='/'>18.2.0</a>
         <a href='/'>Languages</a>
         <a href='/'>GitHub</a>
+        <useForm />
       </Inner>
     </Wrapper>
   )
